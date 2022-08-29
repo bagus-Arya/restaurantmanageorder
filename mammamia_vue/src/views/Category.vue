@@ -1,5 +1,5 @@
 <template>
-    <div class="page-category">
+    <div class="container">
         <div class="columns is-multiline">
             <div class="column is-12">
                 <h2 class="is-size-2 has-text-centered">
@@ -19,6 +19,7 @@
 import axios from 'axios'
 import {toast} from 'bulma-toast'
 import ProductBox from '../components/ProductBox.vue'
+
 export default {
     name:'Category',
     data(){
@@ -44,31 +45,43 @@ export default {
     methods:{
         async getCategory(){
             const categorySlug = this.$route.params.category_slug
+            const token = localStorage.getItem('token')
+            const decodeValueTkn = atob(token);
+            const headers = { 
+                'Content-Type': 'application/json',
+                'Authorization':'Token '+decodeValueTkn
+            };
             this.$store.commit('setIsLoading', true)
-            axios
-                .get(`/api/v1/products/${categorySlug}/`)
+            await axios
+                .get(`/api/v1/products/${categorySlug}/`, {headers})
                 .then(response => {
                     this.category = response.data
                     document.title =  this.category.name +' | mammamia'
                 })
                 .catch(error => {
-                    console.log('here'+error)
-                    toast({
-                        message: 'Something went wrong',
-                        type: 'is-danger',
-                        dismissible: true,
-                        pauseOnHover: true,
-                        duration:2000,
-                        position: 'bottom-right',
-                    })
+                     if (this.$store.state.isAuthenticated === true) {
+                        toast({
+                            message: 'No Data Found',
+                            type: 'is-danger',
+                            dismissible: true,
+                            pauseOnHover: true,
+                            duration:2000,
+                            position: 'bottom-right'
+                        })
+                    }else{
+                        toast({
+                            message: 'Login Dulu Ya',
+                            type: 'is-danger',
+                            dismissible: true,
+                            pauseOnHover: true,
+                            duration:2000,
+                            position: 'center'
+                        })
+                    }
                 })
-
             this.$store.commit('setIsLoading', false)
-             
         }
     }
-
-
 }
 </script>
 

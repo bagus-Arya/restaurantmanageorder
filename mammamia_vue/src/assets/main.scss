@@ -1,0 +1,28 @@
+// Typography
+@import url('https://fonts.googleapis.com/css?family=Tahoma');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+// Set colors
+$red: #E76F51;
+$orange: #E9C46A;
+$orange-light: #E9C46A;
+$green: #2A9D8F;
+
+// Update Bulma's global variables
+$family-primary: "Tahoma";
+$grey-dark: $green;
+$primary: $orange;
+$link: $red;
+$footer-background-color:$orange;
+$title-color:$green;
+$has-background-warning-light:$orange-light;
+
+// Divider
+$divider-color:$green;
+$divider-background-color:$green;
+// Spacing Helper
+$spacing-shortcuts: ("margin": "mg");
+$spacing-vertical: "v";
+$spacing-values: ("small": 10px, "medium": 30px, "large": 190px);
+
+@import '~bulma/bulma';

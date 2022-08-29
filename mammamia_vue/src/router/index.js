@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
 import Product from '../views/Product.vue'
 import Category from '../views/Category.vue'
@@ -6,12 +6,23 @@ import Search from '../views/Search.vue'
 import Cart from '../views/Cart.vue'
 import Signup from '../views/Signup.vue'
 import Login from '../views/Login.vue'
+import MyAccount from '../views/MyAccount.vue'
+import ReviewCart from '../views/ReviewCart.vue'
+import PesananSaya from '../views/MyOrder.vue'
+import RiwayatBelanja from '../views/HistoryOrder.vue'
+import MostOrdered from '../views/MostOrdered.vue'
+import CheckOut from '../views/CheckOut.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/most-ordered',
+    name: 'MostOrdered',
+    component: MostOrdered
   },
   {
     path: '/about',
@@ -54,6 +65,22 @@ const routes = [
     component:Cart
     },
     {
+    path: '/review-cart',
+    name: 'ReviewCart',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component:ReviewCart
+    },
+    {
+    path: '/check-out',
+    name: 'CheckOut',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component:CheckOut
+    },
+    {
     path: '/sign-up',
     name: 'Signup',
     // route level code-splitting
@@ -69,6 +96,39 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component:Login
     },
+    {
+    path: '/my-account',
+    name: 'MyAccount',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: MyAccount,
+    meta: {
+        requireLogin:true
+      }
+    },
+    {
+    path: '/pesanan-saya',
+    name: 'PesananSaya',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: PesananSaya,
+    meta: {
+        requireLogin:true
+      }
+    },
+    {
+    path: '/riwayat-belanja',
+    name: 'RiwayatBelanja',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: RiwayatBelanja,
+    meta: {
+        requireLogin:true
+      }
+    },
 
 ]
 
@@ -76,5 +136,10 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+// router.beforeEach((to, from, next) => {
+//     if (to.name !== 'Login' && !store.state.isAuthenticated) next({ name: 'Login', query: {to: to.path}})
+//     else next()
+// })
 
 export default router

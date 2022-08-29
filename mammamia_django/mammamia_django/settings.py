@@ -42,15 +42,21 @@ INSTALLED_APPS = [
     'corsheaders',  # rest auth token for authentification
     'djoser',  # rest auth token for authentification
     'product',
-
-
+    'django_seed',  # seeder
+    'usr',
 ]
+
+#configure DRF
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 # Setting djoser (authentification)
-
-CORS_ALLOWED_ORIGIN = [
-    'http://localhost:8080',  # frontend urls
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -93,11 +99,27 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'MM_REST',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '8889',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET foreign_key_checks = 0;",
+            'charset': 'utf8mb4',
+            "autocommit": True,
+        }
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'MM_REST',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'HOST': '127.0.0.1',
+#         'PORT': '8889',
+#     }
+# }
 
 
 # Password validation
@@ -122,13 +144,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'id'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Singapore'
 
 USE_I18N = True
 
 USE_TZ = True
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Static files (CSS, JavaScript, Images)

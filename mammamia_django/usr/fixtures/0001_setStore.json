@@ -1,0 +1,10 @@
+[
+  {
+    "model": "usr.StoreStatus",
+    "pk": 1,
+    "fields": {
+      "isOpen": "1",
+      "date_added": "2022-04-11 06:57:14.495285"
+    }
+  }
+]

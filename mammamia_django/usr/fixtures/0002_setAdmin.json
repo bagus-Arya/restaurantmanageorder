@@ -1,0 +1,24 @@
+[
+    {
+      "model": "auth.user",
+      "pk": 46,
+      "fields": {
+        "username": "ayuratna352@",
+        "password": "pbkdf2_sha256$320000$4Ru27q6IBrcrhSAAdccviJ$1cmgDgRjJUzyZ1pk2CpFl4QpkmjFjodQ84f6r+N9X3k=", 
+        "is_superuser": true,
+        "is_staff": true,
+        "is_active": true
+      }
+    },
+    {
+      "model": "auth.user",
+      "pk": 47,
+      "fields": {
+        "username": "komangayu12*",
+        "password": "pbkdf2_sha256$320000$nRLhfLJe5RTEVGygfWMli4$xefSapcAtbns8aHXvuu35O9EVIwyixrBrWkzldK0W0w=",
+        "is_superuser": true,
+        "is_staff": true,
+        "is_active": true
+      }
+    }
+  ]

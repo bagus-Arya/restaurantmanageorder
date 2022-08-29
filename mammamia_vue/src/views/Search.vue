@@ -1,9 +1,10 @@
 <template>
-    <div class="page-search">
-        <div class="column is-multiline">
+    <div class="container">
+        <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">Search</h1>
-                <h2 class="is-size-5 has-text-grey">Search term: "{{query}}"</h2>
+                <h1 class="title">Pencarian</h1>
+                <h2 v-if="this.products.length == 0" class="is-size-5 has-text-grey">Hasil: "{{query}}" Tidak Ditemukan</h2>
+                <h2 v-else class="is-size-5 has-text-grey">Hasil: "{{query}}"</h2>
             </div>
             <!-- Product Component -->
             <ProductBox
@@ -12,9 +13,7 @@
                 v-bind:product = "product"
             />
         </div>
-
     </div>
-    
 </template>
 
 <script>
